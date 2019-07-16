@@ -4,7 +4,6 @@ class Node:
 		self.right = right
 		self.data = data
 		self.label = label
-		self.order = []
 	
 	def height(self):
 		"""
@@ -49,6 +48,21 @@ class Node:
 			self.right.postorder()
 		print(self.label)
 
+	def levelorder(self):
+		"""
+			level order traversal. Implemented using a queue. 
+		"""
+		q = [self]
+		while q:
+			currNode = q.pop(0)
+			print(currNode.label)
+			if currNode.left != None:
+				q.append(currNode.left)
+			if currNode.right != None:
+				q.append(currNode.right)
+		return
+
+	
 
 # Tests
 N = Node(None, None, 257, "N")
@@ -73,29 +87,4 @@ I = Node(J, O, 6, "I")
 root = Node(B, I, 314, "A")
 
 
-print(root.postorder())
-
-# root = Node(B, C, 314)
-# B = Node(C, F, 6)
-# I = Node(J, O, 6)
-
-# C= Node(D, E, 271)
-# F = Node(None, G, 561)
-# J = Node(None, K, 2)
-# O = Node(None, P, 271)
-
-# D = Node(None, None, 28)
-# E = Node(None, None, 0)
-# G = Node(H, None, 3)
-# K = Node(L, N, 1)
-# P = Node(None, None, 28)
-
-# H = Node(None, None, 17)
-# L = Node(None, M, 401)
-# N = Node(None, None, 257)
-
-# M = Node(None, None, 641)
-
-
-print(root.height())
-
+print(root.levelorder())
